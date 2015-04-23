@@ -7,16 +7,18 @@ module.exports = function(grunt) {
         src: [
             //'js/libs/*.js',  All JS in the libs folder
             //'js/global.js'   This specific file
-            'server.js',
-            'server-config.js',
-            'app/*.js',
-            'build/*.js',
-            'lib/*.js',
-            'node_modules/*.js',
-            'public/*.js',
-            'test/*.js',
-            'views/*.js'
-
+            'public/lib/jquery.js',
+            'public/lib/underscore.js',
+            'public/lib/backbone.js',
+            'public/lib/handlebars.js',
+            'public/client/*.js',
+            'public/client/app.js',
+            'public/client/link.js',
+            'public/client/links.js',
+            'public/client/linkView.js',
+            'public/client/linksView.js',
+            'public/client/createLinkView.js',
+            'public/client/router.js'
         ],
         dest: 'build/production.js',
       }
@@ -40,7 +42,7 @@ module.exports = function(grunt) {
     uglify: {
       build: {
         src: 'build/production.js',
-        dest: 'build/production.min.js'
+        dest: 'build/assets/production.min.js'
       }
     },
 

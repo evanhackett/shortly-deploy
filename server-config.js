@@ -6,12 +6,21 @@ var handler = require('./lib/request-handler');
 
 var app = express();
 
+
+var publicAssets;
+
+if (process.env.PORT) {
+  publicAssets = '/build/assets';
+} else {
+  publicAssets = '/public';
+}
+
 app.configure(function() {
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
   app.use(partials());
   app.use(express.bodyParser());
-  app.use(express.static(__dirname + '/public'));
+  app.use(express.static(__dirname + publicAssets));
   app.use(express.cookieParser('shhhh, very secret'));
   app.use(express.session());
 });
