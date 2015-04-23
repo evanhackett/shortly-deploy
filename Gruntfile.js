@@ -3,6 +3,23 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      dist: {
+        src: [
+            //'js/libs/*.js',  All JS in the libs folder
+            //'js/global.js'   This specific file
+            'server.js',
+            'server-config.js',
+            'app/*.js',
+            'build/*.js',
+            'lib/*.js',
+            'node_modules/*.js',
+            'public/*.js',
+            'test/*.js',
+            'views/*.js'
+
+        ],
+        dest: 'build/production.js',
+      }
     },
 
     mochaTest: {
@@ -21,6 +38,10 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      build: {
+        src: 'build/production.js',
+        dest: 'build/production.min.js'
+      }
     },
 
     jshint: {
@@ -37,7 +58,7 @@ module.exports = function(grunt) {
       }
     },
 
-    cssmin: {
+    cssmin: {// add some code - CS
     },
 
     watch: {
@@ -93,7 +114,7 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('build', [
+  grunt.registerTask('build', [ //add some code -CS
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -108,5 +129,6 @@ module.exports = function(grunt) {
     // add your deploy tasks here
   ]);
 
+  grunt.registerTask('default', ['concat', 'uglify']);
 
 };
